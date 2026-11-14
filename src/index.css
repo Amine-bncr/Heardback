@@ -3,24 +3,28 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme inline {
-  /* Light theme (default). Dark overrides follow under [data-theme='dark']. */
-  --color-bg: #F4ECDF;
-  --color-card: #FBF7EF;
-  --color-border: #E2D6C2;
-  --color-text: #14213D;
-  --color-muted: #55607A;
-  --color-orange: #F28C38;
-  --color-orange-text: #A64A0A;
-  --color-light-blue: #CFE0F1;
-  --color-action: #2F5D9B;
+  /* Every token is a CSS custom property so the emitted utilities resolve to
+     var(--hb-*) and actually switch between light and dark. A bare hex value
+     here would be baked into the utility at build time and never change. */
+  --color-bg: var(--hb-bg);
+  --color-card: var(--hb-card);
+  --color-border: var(--hb-border);
+  --color-text: var(--hb-text);
+  --color-muted: var(--hb-muted);
+  --color-orange: var(--hb-orange);
+  --color-orange-text: var(--hb-orange-text);
+  --color-light-blue: var(--hb-light-blue);
+  --color-action: var(--hb-action);
+  --color-ink: var(--hb-ink);
+  --color-ink: var(--hb-ink);
 
-  --color-status-pending: #5E6B82;
-  --color-status-assessment: #2F7FC1;
-  --color-status-interview: #6A56B8;
-  --color-status-offer: #1E8A5F;
-  --color-status-accepted: #146B49;
-  --color-status-rejected: #B23B3B;
-  --color-status-withdrawn: #8A7F6E;
+  --color-status-pending: var(--hb-status-pending);
+  --color-status-assessment: var(--hb-status-assessment);
+  --color-status-interview: var(--hb-status-interview);
+  --color-status-offer: var(--hb-status-offer);
+  --color-status-accepted: var(--hb-status-accepted);
+  --color-status-rejected: var(--hb-status-rejected);
+  --color-status-withdrawn: var(--hb-status-withdrawn);
 
   --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -36,22 +40,48 @@
   --duration-slow: 320ms;
 }
 
-[data-theme='dark'] {
-  --color-bg: #0D1526;
-  --color-card: #16213A;
-  --color-border: #2A3858;
-  --color-text: #F4ECDF;
-  --color-muted: #A9B3C7;
-  --color-orange: #F6A04D;
-  --color-light-blue: #8DB4E2;
+/* Light theme (default). */
+:root {
+  --hb-bg: #F4ECDF;
+  --hb-card: #FBF7EF;
+  --hb-border: #E2D6C2;
+  --hb-text: #14213D;
+  --hb-muted: #55607A;
+  --hb-orange: #F28C38;
+  --hb-orange-text: #A64A0A;
+  --hb-light-blue: #CFE0F1;
+  --hb-action: #2F5D9B;
+  --hb-ink: #14213D;
 
-  --color-status-pending: #A9B3C7;
-  --color-status-assessment: #7DB5EA;
-  --color-status-interview: #A99BE6;
-  --color-status-offer: #4CC38A;
-  --color-status-accepted: #6FD9A5;
-  --color-status-rejected: #F08A82;
-  --color-status-withdrawn: #B9AE9B;
+  --hb-status-pending: #5E6B82;
+  --hb-status-assessment: #2F7FC1;
+  --hb-status-interview: #6A56B8;
+  --hb-status-offer: #1E8A5F;
+  --hb-status-accepted: #146B49;
+  --hb-status-rejected: #B23B3B;
+  --hb-status-withdrawn: #8A7F6E;
+}
+
+/* Dark theme. Every token that is part of the visual surface changes here. */
+[data-theme='dark'] {
+  --hb-bg: #0D1526;
+  --hb-card: #16213A;
+  --hb-border: #2A3858;
+  --hb-text: #F4ECDF;
+  --hb-muted: #A9B3C7;
+  --hb-orange: #F6A04D;
+  --hb-orange-text: #F6A04D;
+  --hb-light-blue: #8DB4E2;
+  --hb-action: #8DB4E2;
+  --hb-ink: #F4ECDF;
+
+  --hb-status-pending: #A9B3C7;
+  --hb-status-assessment: #7DB5EA;
+  --hb-status-interview: #A99BE6;
+  --hb-status-offer: #4CC38A;
+  --hb-status-accepted: #6FD9A5;
+  --hb-status-rejected: #F08A82;
+  --hb-status-withdrawn: #B9AE9B;
 }
 
 /* Respect reduced motion everywhere. */

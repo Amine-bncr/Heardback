@@ -34,9 +34,9 @@ export function CallbackPage() {
   }, [navigate])
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="flex flex-col items-center gap-3 text-text-muted">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-border border-t-[#2F5D9B]" />
+    <div className="flex min-h-screen items-center justify-center bg-bg">
+      <div className="flex flex-col items-center gap-3 text-muted">
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-border border-t-action" />
         <p className="text-sm">Finishing sign-in…</p>
       </div>
     </div>

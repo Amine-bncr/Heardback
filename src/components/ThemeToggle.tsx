@@ -29,7 +29,7 @@ export function ThemeToggle() {
             onClick={() => setMode(opt.value)}
             className={cn(
               'flex min-h-[36px] min-w-[36px] items-center justify-center rounded-[10px] transition-colors',
-              active ? 'bg-action text-white' : 'text-muted hover:text-text',
+              active ? 'bg-action text-text' : 'text-muted hover:text-text',
             )}
           >
             <Icon size={16} aria-hidden="true" />

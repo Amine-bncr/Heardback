@@ -111,7 +111,7 @@ function LogoMark() {
     <svg width="28" height="28" viewBox="0 0 120 120" fill="none" aria-hidden="true">
       <rect x="8" y="20" width="104" height="80" rx="12" ry="12" stroke="currentColor" stroke-width="5" fill="none" />
       <path d="M8 24 L60 64 L112 24" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-      <circle cx="100" cy="18" r="11" fill="#F28C38" />
+      <circle cx="100" cy="18" r="11" fill="var(--color-orange)" />
     </svg>
   )
 }
