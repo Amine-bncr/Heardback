@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme inline {
+  /* Light theme (default). Dark overrides follow under [data-theme='dark']. */
+  --color-bg: #F4ECDF;
+  --color-card: #FBF7EF;
+  --color-border: #E2D6C2;
+  --color-text: #14213D;
+  --color-muted: #55607A;
+  --color-orange: #F28C38;
+  --color-orange-text: #A64A0A;
+  --color-light-blue: #CFE0F1;
+  --color-action: #2F5D9B;
+
+  --color-status-pending: #5E6B82;
+  --color-status-assessment: #2F7FC1;
+  --color-status-interview: #6A56B8;
+  --color-status-offer: #1E8A5F;
+  --color-status-accepted: #146B49;
+  --color-status-rejected: #B23B3B;
+  --color-status-withdrawn: #8A7F6E;
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-card: 16px;
+  --radius-button: 12px;
+  --radius-input: 12px;
+  --radius-badge: 999px;
+
+  --duration-fast: 150ms;
+  --duration-base: 220ms;
+  --duration-slow: 320ms;
+}
+
+[data-theme='dark'] {
+  --color-bg: #0D1526;
+  --color-card: #16213A;
+  --color-border: #2A3858;
+  --color-text: #F4ECDF;
+  --color-muted: #A9B3C7;
+  --color-orange: #F6A04D;
+  --color-light-blue: #8DB4E2;
+
+  --color-status-pending: #A9B3C7;
+  --color-status-assessment: #7DB5EA;
+  --color-status-interview: #A99BE6;
+  --color-status-offer: #4CC38A;
+  --color-status-accepted: #6FD9A5;
+  --color-status-rejected: #F08A82;
+  --color-status-withdrawn: #B9AE9B;
+}
+
+/* Respect reduced motion everywhere. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus rings: visible, never colour-only. */
+:focus-visible {
+  outline: 2px solid var(--color-action);
+  outline-offset: 2px;
+}
+
+/* Touch targets: never smaller than 44px. */
+button,
+a[role='button'],
+[role='button'] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Make sure the app shell fills the viewport on mobile. */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Subtle entrance motion for new list items — kept restrained. */
+@keyframes hb-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hb-enter {
+  animation: hb-fade-up 220ms ease-out both;
+}
+
+/* Status change highlight — brief, not distracting. */
+@keyframes hb-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-action) 40%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-action) 0%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-action) 0%, transparent);
+  }
+}
+
+.hb-pulse {
+  animation: hb-pulse 600ms ease-out;
+}
